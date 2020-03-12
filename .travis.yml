@@ -1,6 +1,13 @@
 language:
   java
 
-script:
-  - ant dist
+addons:
+  sonarcloud:
+    organization: "actividad-pipeline"
+    token:
+      secure: "CWM4NNacl+V/lpV1C+S7hO6GFdmxP8c2g1aqinwsBbJvGmYaXR7veDvNI+piSZLAVkQtWnLAXjfHBTYR/QRnPoUYdjkdyUWkTRw97q8S3M4dkjI2bzJgoS+DbbWN2gWzlfUKkdaT1yNgzniolys7VKcBn4g5OOQMVxw6nbmmk3+wGWXFXx0vF1gJ5B4Sb8b5U+i9Nl5IGKHo1q6KJTBsAu1GQwUpXJom06m0Wtf3So7XWLmjeuMwSeMlnVzeL0IMgDQEyum9eVmSEeGjrRs8VCgpRvz/iBHmVHha6vPZThKImOzY7OMExymHNoWl3Zgmx8ewYRgJhlE18b2AMghCI2g0BO4CCbTAaV3Ie8yG4vwL/G1/UtzzUhBY2OJz6mvQhm8zTYDD087qeE+l6vYtTquX3pNtQqjMmiOosmw5APoykLPPKOXpMYtbOBcjYRn1McrtcD5rI9CcWQ0kEnQlmB2R815c+0LFPSphttnrwH12414YpDNlS/powBq3jAvOdizYr4u8bIWe2o5mK3bhCH8U7UDOzpn5ddF95D9fQ516po02cI9RFduEbFkUhWBqrESnNOeL34Y6c7On7VczNVrMLcYtsfSsuU/45ZTtRHU2BUQ1OSj/keNCsrMERjcc/o5Vbi5J3OPAfHrnoIt15LSoaGUDh4KVJp5bf7nZh1Y="
 
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - ant dist
+  - sonar-scanner
