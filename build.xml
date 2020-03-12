@@ -26,7 +26,7 @@
         <javac srcdir="${src}" destdir="${build}"/>
     </target>
 
-    <target name="junit" depends="compile">
+    <target name="test" depends="compile">
         <junit printsummary="on"
                fork="false"
                haltonfailure="false"
