@@ -26,7 +26,15 @@
         <javac srcdir="${src}" destdir="${build}"/>
     </target>
 
-    <target name="test" depends="compile">
+
+
+    <target name="dist" depends="compile" description="generate the distribution">
+        <buildnumber/>
+        <mkdir dir="${dist}"/>
+        <jar destfile="${dist}/calculator-${version}.${build.number}.jar" basedir="${build}"/>
+    </target>
+
+    <target name="test" depends="dist">
         <junit printsummary="on"
                fork="false"
                haltonfailure="false"
@@ -50,12 +58,6 @@
             *******************************************************
             *******************************************************
         </fail>
-    </target>
-
-    <target name="dist" depends="compile" description="generate the distribution">
-        <buildnumber/>
-        <mkdir dir="${dist}"/>
-        <jar destfile="${dist}/calculator-${version}.${build.number}.jar" basedir="${build}"/>
     </target>
 
     <target name="clean" description="clean up">
