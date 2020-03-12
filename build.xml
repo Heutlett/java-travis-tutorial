@@ -6,6 +6,16 @@
     <property name="build" location="build"/>
     <property name="dist" location="dist"/>
     <property name="version" value="1.0"/>
+    <property name="test.dir" location="tests" />
+    <property name="out" location="out" />
+
+    <path id="classpath.test">
+        <pathelement location="lib/junit-3.8.2.jar"/>
+    </path>
+
+    <path id="classpath.project">
+        <pathelement path="${build}"/>
+    </path>
 
     <target name="init">
         <tstamp/>
@@ -14,6 +24,32 @@
 
     <target name="compile" depends="init" description="compile the source">
         <javac srcdir="${src}" destdir="${build}"/>
+    </target>
+
+    <target name="junit" depends="compile">
+        <junit printsummary="on"
+               fork="false"
+               haltonfailure="false"
+               failureproperty="tests.failed"
+               showoutput="true">
+
+            <classpath refid="classpath.test"/>
+            <formatter type="brief" usefile="false"/>
+
+            <batchtest>
+                <fileset dir="${src}">
+                    <include name="**/Test*.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+
+        <fail if="tests.failed">
+            *******************************************************
+            *******************************************************
+            One or more tests failed. Check the output...
+            *******************************************************
+            *******************************************************
+        </fail>
     </target>
 
     <target name="dist" depends="compile" description="generate the distribution">
@@ -26,4 +62,6 @@
         <delete dir="${build}"/>
         <delete dir="${dist}"/>
     </target>
+
+
 </project>

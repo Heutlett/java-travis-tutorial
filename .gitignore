@@ -96,3 +96,5 @@ fabric.properties
 /out/
 /tests/
 /.idea/
+/lib/
+/out/
