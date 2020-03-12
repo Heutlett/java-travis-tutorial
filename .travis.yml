@@ -7,6 +7,9 @@ addons:
     token:
       secure: "YPnf4KgUBQu1pZawAu7QGGGUpP3K3tZBas82IRf0AiTW3TYqGko0LliXqwLHOa5GFez1CZQbrHh+dmWkSLAIPQv1Sgo3lNuUH2iJozTSapKtSzwqaT1WdqRjZMTpzpnwOzXZE8vZcSTeOK78a8xmVrMjdXL/0+kPru5BMKYo0hEFvA3bG9HwZTxPQ4iep+Ox6nJeBwu69WT2klOHH8Yw9+sq+1+y3T9uR8xKRf7zJ26I8GpgiliFTkhLHyat8i/t285X35xzD/JN93I5LhjA21n1xo2IRWjEa5NYVzAK4XKLjkokBFviZn5De7MdTY9jtW9XiGfc0X1KmG8WEr19rveVDg2FNpmNv7Njo5DA3zX2wT+dnwtfVbXQWg7235NM4zS81DN7IWrq+b+aBJvLDJDL0iy8j/IoZay+p5eQaN53nEHQdymFrjJDaWPI58ulyX6qoANfA8ZWWXawz00lqmgYvDnOwfXTQfn3FGwTFemHqCAJfDsN7Ni4MUDZGtAwGMcV3vaUU7M4S+FJW/9RaijJWppixDE2irJcWygwsNDGtOuOYtaZo8TZ2ZeCfBlVhWEM9D1ek3KHGExQLE0VK32qye6FbkXZ69J+ss2ZmOkanZMmt0DBVEeTgpxGhsNymLimR/bJikTJyJWs9/1gWVt3vPF/II3eDWZ/eVyjorc="
 
+before_install:
+  - sudo apt-get install ant-optional
+
 script:
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
   - ant test -lib ./lib/junit-3.8.2.jar
